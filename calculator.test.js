@@ -1,29 +1,36 @@
-const add = require('./calculator');
+const add = require("./calculator");
 
-test('Return 0 if passing nothing to add()', () => {
+test("Return 0 if passing nothing to add()", () => {
   expect(add("")).toBe(0);
 });
 
-// test('Return TRUE if passing with coma seperated', () => {
+// test("Return TRUE if passing with coma seperated", () => {
 //   expect(add("1,2")).toBe(true);
 // });
 
-test('Return FALSE if passing with coma seperated', () => {
+test("Return FALSE if passing with coma seperated", () => {
   expect(add("12")).toBe(false);
 });
 
-test('Returns the sum of two numbers', () => {
+test("Returns the sum of two numbers", () => {
   expect(add("10,20")).toBe(30);
 });
 
-test('Returns the sum of Three numbers with spacesin between', () => {
+test("Returns the sum of Three numbers with spacesin between", () => {
   expect(add("  10  , 20, 40")).toBe(70);
 });
 
-test('returns the sum of numbers with new lines between them', () => {
+test("returns the sum of numbers with new lines between them", () => {
   expect(add("10,\n20,40")).toBe(70);
 });
 
-test('returns the sum of numbers when a delimiter is introduced', () => {
+test("returns the sum of numbers when a delimiter is introduced", () => {
   expect(add("//;\n10;20,")).toBe(30);
 });
+
+describe("exception test in add()", (err) => {
+  it("Throws an exception when a Negative number is passed to add()", () => {
+    expect(add("10,\n-20,-40"))
+      .toThrow(new Error(`negative number detected : ${err}`));
+  })
+})
