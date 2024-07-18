@@ -20,3 +20,6 @@ test('Returns the sum of Three numbers with spacesin between', () => {
   expect(add("  10  , 20, 40")).toBe(70);
 });
 
+test('returns the sum of numbers with new lines between them', () => {
+  expect(add("10,\n20,40")).toBe(70);
+});
